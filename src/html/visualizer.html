@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>visualizer</title>
+
+  <style>
+    body {
+      background-color: black;
+      background-image: url(https://wallpapercave.com/wp/wp11700231.jpg);
+      background-size: cover;
+    }
+
+    #visualizer {
+      display: flex;
+      justify-self: center;
+      justify-content: center;
+      align-items: center;
+      height: 550px;
+      width: 55%;
+      margin-top: 200px;
+      background-color: #f8c06549;
+      border-radius: 40px;
+      backdrop-filter: blur(5px);
+    }
+
+    .bar {
+      width: 20px;
+      margin: 2px;
+      background-color: rgb(255, 255, 255);
+      border-radius: 5px;
+    }
+
+    .play {
+      width: 80%;
+      height: 30px;
+      background-color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <div id="visualizer"></div>
+    <div id="play"></div>
+  </div>
+
+  <script>
+    const visualizer = document.getElementById('visualizer');
+    const barCount = 30;
+
+    const randomValues = (limit) => {
+      return Math.floor(Math.random() * limit);
+    };
+
+    const oneFrame = () => {
+      for (let i = 0; i < barCount; i++) {
+        const bar = document.createElement("div");
+        bar.classList.add("bar");
+        bar.style.height = `${randomValues(200)}px`;
+        visualizer.append(bar);
+      }
+    };
+
+    const removeFrame = () => {
+      document.getElementById("visualizer").innerHTML = "";
+    };
+
+    setInterval(() => {
+      removeFrame();
+      oneFrame();
+    }, 250);
+  </script>
+</body>
+
+</html>
